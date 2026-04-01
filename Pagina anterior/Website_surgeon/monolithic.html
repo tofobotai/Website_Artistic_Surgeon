@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll-Driven Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PP Neue Montreal';
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            font-weight: 500;
+            line-height: 1;
+        }
+        
+        p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1;
+        }
+        
+        section {
+            position: relative;
+            width: 100vw;
+            height: 100svh;
+            overflow: hidden;
+        }
+        
+        .intro, .outro{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            min-height: 50%;
+            height: 100svh;
+        }
+        
+        .spotlight-intro-text-wrapper {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .spotlight-intro-text {
+            flex: 1;
+            will-change: transform;    
+            position: relative;
+        }
+        
+        .spotlight-intro-text:nth-child(1) {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .spotlight-bg-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transform: scale(0);
+            will-change: transform;
+        }
+        
+        .spotlight-bg-image img {
+            transform: scale(1.5);
+            will-change: transform;
+        }
+        
+        .spotlight-titles-container {
+            position: absolute;
+            top: 0;
+            left: 15vw;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            clip-path: polygon(50svh 0px, 0px 50%, 50svh 100%, 100% calc(100% + 100svh), 100% -100svh);
+            --before-opacity: 0;
+            --after-opacity: 0;
+        
+        }
+        
+        .spotlight-titles-container::before,
+        .spotlight-titles-container::after {
+            content: '';
+            position: absolute;
+            width: 100svh;
+            height: 2.5px;
+            background-color: #fff;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            z-index: 10;
+        }
+        
+        .spotlight-titles-container::before {
+            top: 0;
+            left: 0;
+            transform: rotate(-45deg) translate(-7rem);
+            opacity: var(--before-opacity);
+        }
+        
+        .spotlight-titles-container::after {
+            bottom: 0;
+            left: 0;
+            transform: rotate(45deg) translate(-7rem);;
+            opacity: var(--after-opacity);
+        }
+        
+        .spotlight-titles {
+            position: relative;
+            left: 15%;
+            width: 75%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+            transform: translateY(100%);
+            z-index: 2;
+        }
+        
+        .spotlight-titles h1 {
+            color:#fff;
+            opacity: 0.25;
+            transition: opacity 0.3s ease;
+        }
+        
+        .spotlight-images {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            min-width: 300px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .spotlight-image {
+            position: absolute;
+            width: 200px;
+            height: 150px;
+            will-change: transform;
+        }
+        
+        .spotlight-header {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+        
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .intro, 
+            .outro {
+                padding: 2rem;
+                text-align: center;
+            }
+        
+            .spotlight-titles-container {
+                clip-path: none;
+            }
+        
+            .spotlight-titles-container::before,
+            .spotlight-titles-container::after {
+                display: none;
+            }
+            
+            .spotlight-titles {
+                left: 0;
+            }
+        
+            .spotlight-header {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="intro">
+        <h1>Bienvenido</h1>
+    </div>
+
+    <section class="spotlight">
+        <div class="spotlight-intro-text-wrapper">
+            <div class="spotlight-intro-text">
+                <p>DR CIRUJANO PLÁSTICO</p>
+            </div>
+            <div class="spotlight-intro-text">
+                <p>JORGE PEREYRA</p>
+            </div>
+        </div>
+
+        <div class="spotlight-bg-image">
+            <img src="image1.png" alt="">
+        </div>
+
+        <div class="spotlight-titles-container">
+            <div class="spotlight-titles"></div>
+        </div>
+
+        <div class="spotlight-images"></div>
+
+        <div class="spotlight-header">
+            <p>SERVICIOS</p>
+        </div>
+    </section>
+
+    <div class="outro">
+        <p>Conoce más detalles en nuestras redes sociales</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.35/dist/lenis.min.js"></script>
+
+    <script>
+        // Configuration for animations
+        const config = {
+            gap: 0.08, // Gap between floating image animations
+            speed: 0.3, // Speed of each image animation
+            arcRadius: 500 // Radius of the bezier curve
+        };
+
+        // Data for dynamic content
+        const spotlightItems = [
+            { name: "Cirugía Plástica", image: "image1.png" },
+            { name: "Rinoplastía", image: "image5.png" },
+            { name: "Liposucción", image: "image6.png" },
+            { name: "Botox", image: "image7.png" },
+            { name: "Mamoplastia", image: "image4.png" },
+            { name: "Gluteoplastia", image: "image2.png" }
+
+        ];
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Initialize smooth scrolling with Lenis
+        const lenis = new Lenis();
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+
+        // DOM element queries
+        const titlesContainer = document.querySelector('.spotlight-titles');
+        const imagesContainer = document.querySelector('.spotlight-images');
+        const sideHeader = document.querySelector('.spotlight-header');
+        const titlesClipper = document.querySelector('.spotlight-titles-container');
+        const introTextElements = document.querySelectorAll('.spotlight-intro-text');
+        const imageElements = [];
+
+        // Dynamic content generation
+        spotlightItems.forEach((item, index) => {
+            const titleElement = document.createElement('h1');
+            titleElement.textContent = item.name;
+            if (index === 0) titleElement.style.opacity = "1";
+            titlesContainer.appendChild(titleElement);
+
+            const imgWrapper = document.createElement('div');
+            imgWrapper.className = 'spotlight-image';
+            const imgElement = document.createElement('img');
+            imgElement.src = item.image;
+            imgElement.alt = "";
+            imgWrapper.appendChild(imgElement);
+            imagesContainer.appendChild(imgWrapper);
+            imageElements.push(imgWrapper);
+        });
+
+        const titleElements = titlesContainer.querySelectorAll('h1');
+        let currentActiveIndex = 0;
+
+        // Bezier Curve Logic
+        const containerWidth = window.innerWidth * 0.3;
+        const containerHeight = window.innerHeight;
+        const arcStartX = containerWidth /2 - 50;
+        const arcStartY = -200;
+        const arcEndY = containerHeight + 200;
+        const arcControlPointX = arcStartX + config.arcRadius;
+        const arcControlPointY = containerHeight / 2;
+
+
+        function getBezierPosition(t) {
+            const x =
+                (1 - t) * (1 - t) * arcStartX +
+                2 * (1 - t) * t * arcControlPointX +
+                t * t * arcStartX;
+            const y =
+                (1 - t) * (1 - t) * arcStartY +
+                2 * (1 - t) * t * arcControlPointY +
+                t * t * arcEndY;
+            return { x, y };
+        }
+
+        // Function to calculate individual image progress
+        function getImageProgressState(index, totalProgress) {
+            const start = index * config.gap;
+            const end = start + config.speed;
+
+            if (totalProgress < start) return -1; // Not yet started
+            if (totalProgress > end) return 2; // Finished
+            return (totalProgress - start) / config.speed; // Normalized progress
+        }
+
+        // Initial state for images
+        imageElements.forEach((img) => gsap.set(img, { opacity: 0 }));
+
+        // Main ScrollTrigger setup
+        ScrollTrigger.create({
+            trigger: ".spotlight",
+            start: "top top",
+            end: `+=${window.innerHeight * 10}px`,
+            pin: true,
+            pinSpacing: true,
+            scrub: 1,
+            onUpdate: (self) => {
+                const progress = self.progress;
+
+                // Intro animation segment (0% to 20%)
+                if (progress <= 0.2) {
+                    const animationProgress = progress / 0.2;
+                    const moveDistance = window.innerWidth * 0.6;
+
+                    gsap.set(introTextElements[0], {
+                        x: -animationProgress * moveDistance,
+                    });
+                    gsap.set(introTextElements[1], {
+                        x: animationProgress * moveDistance,
+                    });
+                    gsap.set(introTextElements[0], { opacity: 1 });
+                    gsap.set(introTextElements[1], { opacity: 1 });
+
+                    gsap.set(".spotlight-bg-image", {
+                        scale: animationProgress,
+                    });
+                    gsap.set(".spotlight-bg-image img", {
+                        scale: 1.5 - animationProgress * 0.5,
+                    });
+
+                    imageElements.forEach((img) => gsap.set(img, { opacity: 0 }));
+                    sideHeader.style.opacity = "0";
+                    gsap.set(titlesClipper, {
+                        "--before-opacity": "0",
+                        "--after-opacity": "0",
+                    });
+
+                } else if (progress > 0.2 && progress <= 0.25) {
+                    gsap.set(".spotlight-bg-image", { scale: 1 });
+                    gsap.set(".spotlight-bg-image img", { scale: 1 });
+
+                    gsap.set(introTextElements[0], { opacity: 0 });
+                    gsap.set(introTextElements[1], { opacity: 0 });
+
+                    imageElements.forEach((img) => gsap.set(img, { opacity: 0 }));
+                    sideHeader.style.opacity = "1";
+                    gsap.set(titlesClipper, {
+                        "--before-opacity": "1",
+                        "--after-opacity": "1",
+                    });
+                } else if (progress > 0.25 && progress <= 0.95) {
+                    gsap.set(".spotlight-bg-image", { scale: 1 });
+                    gsap.set(".spotlight-bg-image img", { scale: 1 });
+
+                    gsap.set(introTextElements[0], { opacity: 0 });
+                    gsap.set(introTextElements[1], { opacity: 0 });
+
+                    sideHeader.style.opacity = "1";
+                    gsap.set(titlesClipper, {
+                        "--before-opacity": "1",
+                        "--after-opacity": "1",
+                    });
+                }
+
+
+                const switchProgress = (progress - 0.25) / 0.7;
+                const viewportHeight = window.innerHeight;
+                const titlesContainerHeight = titlesContainer.scrollHeight;
+                const startPosition = viewportHeight;
+                const targetPosition = -titlesContainerHeight;
+                const totalDistance = startPosition - targetPosition;
+                const currentY = startPosition - switchProgress * totalDistance;
+
+                gsap.set(".spotlight-titles", {
+                    y: currentY
+                });
+
+                imageElements.forEach((img, index) => {
+                    const imageProgress = getImageProgressState(index, switchProgress);
+
+                    if (imageProgress < 0 || imageProgress > 1) {
+                        gsap.set(img, { opacity: 0 });
+                    } else {
+                        // Calculate the position using a Bezier curve
+                        const pos = getBezierPosition(imageProgress);
+
+                        // Set the image's position and make it visible
+                        gsap.set(img, {
+                            x: pos.x - 100,
+                            y: pos.y - 75,
+                            opacity: 1,
+                        });
+                    }
+                });
+
+                const viewportMiddle = viewportHeight / 2;
+                let closestIndex = 0;
+                let closestDistance = Infinity;
+
+                titleElements.forEach((title, index) => {
+                    const titleRect = title.getBoundingClientRect();
+                    const titleCenter = titleRect.top + titleRect.height / 2;
+                    const distanceFromCenter = Math.abs(titleCenter - viewportMiddle);
+
+                    if (distanceFromCenter < closestDistance) {
+                        closestDistance = distanceFromCenter;
+                        closestIndex = index;
+                    }
+                });
+
+                if (closestIndex !== currentActiveIndex) {
+                    if (titleElements[currentActiveIndex]) {
+                        titleElements[currentActiveIndex].style.opacity = "0.25";
+                    }
+                    titleElements[closestIndex].style.opacity = "1";
+                    document.querySelector(".spotlight-bg-image img").src = spotlightItems[closestIndex].image;
+                    currentActiveIndex = closestIndex;
+                } else if (progress > 0.95) {
+                    sideHeader.style.opacity = "0";
+                    gsap.set(titlesClipper, {
+                        "--before-opacity": "0",
+                        "--after-opacity": "0",
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

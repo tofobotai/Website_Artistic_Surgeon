@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Jorge Pereyra | Cirujano Plástico Certificado en CDMX y Tapachula</title>
+    <meta name="description"
+        content="Cirujano plástico certificado por el Consejo Mexicano. Rinoplastia ultrasónica, lipoescultura, mamoplastia y más. Resultados naturales con seguridad. Agenda tu valoración.">
+    <meta name="author" content="Dr. Jorge Enrique Pereyra Arzate">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (WhatsApp, Facebook, Instagram) -->
+    <meta property="og:title" content="Dr. Jorge Pereyra — Cirugía Plástica y Estética">
+    <meta property="og:description"
+        content="Transforma tu imagen con seguridad, experiencia y armonía estética. Cirujano plástico certificado en CDMX.">
+    <meta property="og:image" content="Foto_perfil.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+
+    <!-- Preconnect: acelera carga de recursos externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.youtube.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PP Neue Montreal', sans-serif;
+            background-color: #0a0a0c;
+            color: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .scroll-indicator.visible {
+            opacity: 1;
+            animation: blink 2s infinite ease-in-out;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        section {
+            position: relative;
+            width: 100vw;
+            height: 100svh;
+            overflow: hidden;
+        }
+
+        .intro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 50%;
+            height: 100svh;
+            position: relative;
+        }
+
+        .outro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0c0c0e;
+            color: #ffffff;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100vw;
+            height: 100svh;
+        }
+
+        .logo-img {
+            width: 300px;
+            max-width: 80vw;
+            height: auto;
+            object-fit: contain;
+            opacity: 0;
+            position: absolute;
+            z-index: 10;
+            will-change: transform, opacity;
+        }
+
+        .logo-text {
+            width: 450px;
+            max-width: 80vw;
+            height: auto;
+            object-fit: contain;
+            opacity: 0;
+            position: absolute;
+            z-index: 5;
+            will-change: opacity, transform;
+        }
+
+        .spotlight {
+            background-color: #ffffff;
+            /* White bg for spotlight */
+        }
+
+        .spotlight-intro-text-wrapper {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .spotlight-intro-text {
+            flex: 1;
+            will-change: transform;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spotlight-intro-text:nth-child(1) {
+            align-items: flex-end;
+            padding-right: 2rem;
+            text-align: right;
+        }
+
+        .spotlight-intro-text:nth-child(2) {
+            align-items: flex-start;
+            padding-left: 2rem;
+            text-align: left;
+        }
+
+        .spotlight-intro-text p {
+            margin: 0.2rem 0;
+            color: #000;
+            /* Black text so it's visible on the white spotlight background */
+            font-size: 2.1rem;
+            /* Reduced by ~30% from 3rem */
+            font-weight: 400;
+        }
+
+        .spotlight-bg-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transform: scale(0);
+            will-change: transform;
+        }
+
+        .spotlight-bg-image img {
+            transform: scale(1.5);
+            will-change: transform;
+        }
+
+        .spotlight-titles-container {
+            position: absolute;
+            top: 0;
+            left: 15vw;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            clip-path: polygon(50svh 0px, 0px 50%, 50svh 100%, 100% calc(100% + 100svh), 100% -100svh);
+            --before-opacity: 0;
+            --after-opacity: 0;
+
+        }
+
+        .spotlight-titles-container::before,
+        .spotlight-titles-container::after {
+            content: '';
+            position: absolute;
+            width: 100svh;
+            height: 2.5px;
+            background-color: #fff;
+            /* White lines */
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            z-index: 10;
+        }
+
+        .spotlight-titles-container::before {
+            top: 0;
+            left: 0;
+            transform: rotate(-45deg) translate(-7rem);
+            opacity: var(--before-opacity);
+        }
+
+        .spotlight-titles-container::after {
+            bottom: 0;
+            left: 0;
+            transform: rotate(45deg) translate(-7rem);
+            ;
+            opacity: var(--after-opacity);
+        }
+
+        .spotlight-titles {
+            position: relative;
+            left: 15%;
+            width: 75%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+            transform: translateY(100%);
+            z-index: 2;
+        }
+
+        .spotlight-titles h1 {
+            color: #fff;
+            /* White text for curve */
+            opacity: 0.25;
+            transition: opacity 0.3s ease;
+        }
+
+        .spotlight-images {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            min-width: 300px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .spotlight-image {
+            position: absolute;
+            width: 200px;
+            height: 150px;
+            will-change: transform;
+        }
+
+        .spotlight-header {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            color: #fff;
+            /* White Header */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+
+            .intro,
+            .outro {
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .spotlight-titles-container {
+                clip-path: none;
+                left: 0;
+            }
+
+            .spotlight-titles-container::before,
+            .spotlight-titles-container::after {
+                display: none;
+            }
+
+            .spotlight-titles {
+                left: 5%;
+                width: 90%;
+                gap: 3rem;
+            }
+
+            .spotlight-intro-text p {
+                font-size: 1.3rem;
+            }
+
+            .spotlight-intro-text:nth-child(1) {
+                padding-right: 0.8rem;
+            }
+
+            .spotlight-intro-text:nth-child(2) {
+                padding-left: 0.8rem;
+            }
+
+            .spotlight-header {
+                display: none;
+            }
+        }
+
+        /* --- ESTILOS AGREGADOS: SECCIONES NUEVAS --- */
+        :root {
+            --color-bg-dark: #0a0a0c;
+            --color-bg-lighter: #151518;
+            --color-accent: #c4a173;
+            --color-accent-hover: #e0b985;
+            --color-text-main: #fcfcfc;
+            --color-text-muted: #a0a0a5;
+            --font-main: 'Outfit', sans-serif;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.9) 0%, rgba(10, 10, 12, 0) 100%);
+            transition: background 0.3s;
+            font-family: var(--font-main);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links a {
+            color: var(--color-text-main);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .btn-cta {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--color-accent);
+            color: var(--color-bg-dark);
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .contact-box .btn-cta {
+            padding: 1.6rem 4rem;
+            font-size: 1.4rem;
+            border-radius: 50px;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--color-accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* INFORMATION SECTIONS */
+        .info-section {
+            padding: 8rem 10%;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            font-family: var(--font-main);
+            height: auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--color-accent);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* BIO SECTION */
+        .bio-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .bio-image {
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .bio-image img {
+            border-radius: 20px;
+        }
+
+        .bio-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .credentials {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .credentials div {
+            margin-bottom: 0.5rem;
+            color: var(--color-accent);
+            font-size: 1.1rem;
+        }
+
+        /* PROCEDURES */
+        .procedures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 2rem;
+        }
+
+        .procedure-cat {
+            background: var(--color-bg-lighter);
+            border-radius: 16px;
+            padding: 3rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .procedure-cat:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(196, 161, 115, 0.3);
+        }
+
+        .procedure-cat h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--color-accent);
+        }
+
+        .procedure-cat ul {
+            list-style: none;
+        }
+
+        .procedure-cat li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--color-text-muted);
+            transition: color 0.3s;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .procedure-cat li:hover {
+            color: #fff;
+            padding-left: 10px;
+        }
+
+        /* FAQ & CONTACT */
+        .faq-contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            background: var(--color-bg-lighter);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+
+        .faq-a {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .contact-box {
+            background: linear-gradient(145deg, var(--color-bg-lighter), rgba(20, 20, 24, 0.5));
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(196, 161, 115, 0.2);
+        }
+
+        .contact-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .contact-box p {
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .contact-info-item {
+            margin: 1.5rem 0;
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+        }
+
+        .contact-info-item a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            font-family: var(--font-main);
+        }
+
+        @media (max-width: 900px) {
+
+            .bio-content,
+            .faq-contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-text {
+                font-size: 2rem;
+            }
+
+            .spotlight-intro-text-centered p {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Nav: hide links, show hamburger */
+            .nav-links a {
+                display: none;
+            }
+
+            .nav-links .btn-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            /* Logo intro: proportional, not tiny */
+            .logo-img {
+                width: 200px;
+                height: auto;
+            }
+
+            .logo-text {
+                width: 200px;
+                max-width: 60vw;
+            }
+
+            /* Sections: reduce padding, no forced height */
+            .info-section {
+                padding: 4rem 5%;
+                min-height: auto;
+            }
+
+            /* Bio image: limit height when stacked */
+            .bio-image {
+                max-height: 350px;
+                aspect-ratio: auto;
+            }
+
+            /* Testimonials: clamp width to viewport */
+            .testi-img {
+                width: clamp(260px, 80vw, 400px);
+                height: 200px;
+            }
+
+            /* FAQ gap reduced when stacked */
+            .faq-contact-wrapper {
+                gap: 2rem;
+            }
+
+            /* Contact box: tighter on mobile */
+            .contact-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-box .btn-cta {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            /* Typography: fluid sizing */
+            h1 {
+                font-size: clamp(1.8rem, 7vw, 4rem);
+            }
+
+            p {
+                font-size: clamp(1rem, 3.5vw, 1.5rem);
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-section {
+                padding: 3rem 4%;
+            }
+
+            .logo-img {
+                width: 240px;
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        /* OUTRO SOCIAL BAR */
+        .social-wrapper {
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            color: #fff;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--color-accent);
+            color: #000;
+            border-color: var(--color-accent);
+            transform: translateY(-5px);
+        }
+
+        /* BIO LOGO CAROUSEL */
+        .logo-carousel {
+            margin-top: 5rem;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .carousel-track {
+            display: flex;
+            width: calc(200px * 15);
+            animation: scroll-carousel 20s linear infinite;
+        }
+
+        .carousel-logo {
+            width: 150px;
+            height: 100px;
+            object-fit: contain;
+            margin: 0 25px;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+            filter: grayscale(100%);
+        }
+
+        .carousel-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        @keyframes scroll-carousel {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-200px * 5));
+            }
+        }
+
+        /* MODAL */
+        .procedure-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .procedure-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--color-bg-lighter);
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.4s ease;
+            border: 1px solid var(--color-accent);
+        }
+
+        .procedure-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--color-text-muted);
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            color: var(--color-accent);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-main);
+        }
+
+        .modal-content p {
+            color: #fff;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            font-family: var(--font-main);
+            line-height: 1.6;
+        }
+
+        .ideal-box {
+            background: rgba(196, 161, 115, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            font-family: var(--font-main);
+            border-left: 4px solid var(--color-accent);
+        }
+
+        /* TESTIMONIOS CAROUSEL */
+        .testimonio-carousel {
+            margin-top: 2rem;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .testimonio-track {
+            display: flex;
+            width: fit-content;
+            animation: scroll-testi 35s linear infinite;
+        }
+
+        .testimonio-track.paused {
+            animation-play-state: paused;
+        }
+
+        .testi-img {
+            width: 400px;
+            height: 250px;
+            object-fit: contain;
+            background-color: rgba(255, 255, 255, 0.02);
+            margin: 0 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .testi-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes scroll-testi {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* TESTI MODAL (OXFORD GRAY) */
+        .testi-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(54, 69, 79, 0.95);
+            /* Oxford Gray #36454F */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .testi-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .testi-modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+        }
+
+        .testi-modal.active .testi-modal-content {
+            transform: scale(1);
+        }
+
+        .testi-modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .testi-modal-content iframe {
+            width: 80vw;
+            max-width: 900px;
+            height: 60vh;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .testi-close {
+            position: absolute;
+            top: -40px;
+            right: 0px;
+            font-size: 2.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .testi-close {
+                right: -40px;
+            }
+        }
+
+        /* Hamburger icon — hidden on desktop */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+            z-index: 200;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Mobile fullscreen menu overlay */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 12, 0.97);
+            z-index: 150;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            font-family: var(--font-main);
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--color-accent);
+        }
+
+        .mobile-menu .btn-cta {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* FLOATING WHATSAPP BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 35px;
+            /* Ajustado por el scale */
+            right: 35px;
+            /* Ajustado por el scale */
+            width: 50px;
+            height: 50px;
+            background: rgba(10, 10, 12, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            backdrop-filter: blur(8px);
+            animation: wa-glow 3s ease-in-out infinite;
+            transform: scale(1.3);
+            /* Inicia grande */
+        }
+
+        .whatsapp-float.is-scrolling {
+            transform: scale(1);
+            /* Se achica al mover */
+            opacity: 0.8;
+        }
+
+        @keyframes wa-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 8px rgba(37, 211, 102, 0.15);
+            }
+
+            50% {
+                box-shadow: 0 0 18px rgba(37, 211, 102, 0.35);
+            }
+        }
+
+        .whatsapp-float:hover {
+            background-color: #25D366;
+            border-color: #25D366;
+            transform: scale(1.35) translateY(-5px);
+            animation: none;
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.5);
+            opacity: 1;
+        }
+
+        .whatsapp-float svg {
+            width: 22px;
+            height: 22px;
+            fill: #fff;
+        }
+
+        @media (max-width: 480px) {
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                border-radius: 14px;
+            }
+
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="#" class="nav-logo">
+            <img src="Nombre_Logo.png" alt="Dr. Jorge Pereyra">
+        </a>
+        <div class="nav-links">
+            <!-- Menús removidos para un look minimalista en escritorio -->
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#biografia" class="mobile-nav-link">Biografía</a>
+        <a href="#procedimientos" class="mobile-nav-link">Procedimientos</a>
+        <a href="#testimonios" class="mobile-nav-link">Testimonios</a>
+        <a href="#contacto" class="mobile-nav-link">Contacto</a>
+        <a href="https://wa.me/525551864201?text=Hola,%20vi%20sus%20resultados%20y%20me%20interesa%20agendar%20una%20cita%20de%20valoraci%C3%B3n.%20%C2%BFPodr%C3%ADan%20compartirme%20costos%20y%20horarios%20disponibles%3F"
+            target="_blank" class="btn-cta">Agendar Valoración</a>
+    </div>
+
+    <div class="intro">
+        <div class="logo-container">
+            <img class="logo-img" src="logo.png" alt="Logo">
+            <img class="logo-text" src="Nombre_Logo.png" alt="Dr. Jorge Pereyra">
+        </div>
+        <div class="scroll-indicator" id="scrollIndicator">Desplazar hacia abajo</div>
+    </div>
+
+    <section class="spotlight">
+        <div class="spotlight-intro-text-wrapper">
+            <div class="spotlight-intro-text">
+                <p>Transforma</p>
+                <p>tu imagen</p>
+                <p>con</p>
+            </div>
+            <div class="spotlight-intro-text">
+                <p>seguridad,</p>
+                <p>experiencia,</p>
+                <p>armonía estética</p>
+            </div>
+        </div>
+
+        <div class="spotlight-bg-image">
+            <img src="image1.png" alt="">
+        </div>
+
+        <div class="spotlight-titles-container">
+            <div class="spotlight-titles"></div>
+        </div>
+
+        <div class="spotlight-images"></div>
+
+        <div class="spotlight-header">
+            <p>SERVICIOS</p>
+        </div>
+    </section>
+
+    <!-- DOCTOR BIO SECTION -->
+    <section class="info-section" id="biografia">
+        <h2 class="section-title fade-up">El Artífice de tu Belleza</h2>
+        <div class="bio-content">
+            <div class="bio-image fade-up">
+                <img src="Foto_perfil.png" alt="Dr. Jorge Pereyra" loading="lazy">
+            </div>
+            <div class="bio-text fade-up">
+                <p>El Dr. Jorge Enrique Pereyra Arzate es Médico Cirujano egresado de la Universidad Nacional Autónoma
+                    de México (UNAM), con Especialidad en Cirugía General realizada en el prestigioso Centro Médico ABC.
+                </p>
+                <p>Consolidó su formación con la Subespecialidad en Cirugía Plástica, Estética y Reconstructiva en el
+                    Hospital Central Militar. Su preparación le permite desarrollar una práctica basada en la precisión
+                    quirúrgica, la seguridad del paciente y resultados completamente naturales.</p>
+                <div class="credentials">
+                    <div>Cédula Profesional: 9708270</div>
+                    <div>Cédula Profesional: 12705093</div>
+                    <div>Número de Certificación del Consejo Mexicano de Cirugía Plástica: 2654</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-carousel fade-up">
+            <div class="carousel-track">
+                <!-- Group 1 -->
+                <img src="Logo_Institucion_01.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_02.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_03.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_04.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_05.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <!-- clones for infinite scrolling -->
+                <img src="Logo_Institucion_01.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_02.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_03.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_04.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_05.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_01.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_02.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_03.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_04.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+                <img src="Logo_Institucion_05.png" alt="Logos Institución" class="carousel-logo" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCEDURES SECTION -->
+    <section class="info-section" id="procedimientos">
+        <h2 class="section-title fade-up">Procedimientos</h2>
+        <p class="fade-up"
+            style="color: var(--color-text-muted); font-size: 1.4rem; text-align: center; margin: -2rem 0 3rem 0;">
+            Selecciona alguna opción para conocer más</p>
+        <div class="procedures-grid fade-up">
+            <div class="procedure-cat fade-up">
+                <h3>Corporales</h3>
+                <ul>
+                    <li>Abdominoplastia</li>
+                    <li>Aumento / Levantamiento de glúteos</li>
+                    <li>Ginecomastia</li>
+                    <li>Mamoplastia de aumento</li>
+                    <li>Lipoescultura</li>
+                    <li>Mommy Make Over</li>
+                </ul>
+            </div>
+            <div class="procedure-cat fade-up" style="transition-delay: 0.1s">
+                <h3>Faciales</h3>
+                <ul>
+                    <li>Rinoplastia Ultrasónica</li>
+                    <li>Cirugía de orejas (Otoplastia)</li>
+                    <li>Levantamiento de párpados</li>
+                    <li>Lipo papada</li>
+                    <li>Bichectomía</li>
+                    <li>Lifting Facial</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="info-section" id="testimonios">
+        <h2 class="section-title fade-up">Testimonios</h2>
+        <p class="fade-up"
+            style="color: var(--color-text-muted); font-size: 1.4rem; text-align: center; margin: -2rem 0 3rem 0;">
+            Selecciona uno para ampliar</p>
+        <div class="testimonio-carousel fade-up">
+            <div class="testimonio-track" id="testiTrack">
+                <!-- Set 1 -->
+                <img src="testimonios_01.png" alt="Testimonio" class="testi-img testi-item" data-type="image"
+                    data-src="testimonios_01.png" loading="lazy">
+                <img src="testimonios_02.png" alt="Testimonio" class="testi-img testi-item" data-type="image"
+                    data-src="testimonios_02.png" loading="lazy">
+                <img src="testimonios_03.png" alt="Testimonio" class="testi-img testi-item" data-type="image"
+                    data-src="testimonios_03.png" loading="lazy">
+
+                <div class="testi-img testi-item" data-type="video"
+                    data-src="https://www.youtube.com/embed/7zK-JYx_41Y?autoplay=1&mute=1"
+                    style="position: relative; overflow: hidden;">
+                    <iframe
+                        src="https://www.youtube.com/embed/7zK-JYx_41Y?autoplay=1&mute=1&controls=0&loop=1&playlist=7zK-JYx_41Y&playsinline=1"
+                        style="width: 150%; height: 150%; position: absolute; top: -25%; left: -25%; pointer-events: none; border: none;"></iframe>
+                    <div
+                        style="position: absolute; z-index: 10; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.1);">
+                        <svg fill="#fff" width="48" viewBox="0 0 24 24"
+                            style="opacity: 0.9; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="testi-img testi-item" data-type="video"
+                    data-src="https://www.youtube.com/embed/qI7NmhzbZBA?autoplay=1&mute=1"
+                    style="position: relative; overflow: hidden;">
+                    <iframe
+                        src="https://www.youtube.com/embed/qI7NmhzbZBA?autoplay=1&mute=1&controls=0&loop=1&playlist=qI7NmhzbZBA&playsinline=1"
+                        style="width: 150%; height: 150%; position: absolute; top: -25%; left: -25%; pointer-events: none; border: none;"></iframe>
+                    <div
+                        style="position: absolute; z-index: 10; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.1);">
+                        <svg fill="#fff" width="48" viewBox="0 0 24 24"
+                            style="opacity: 0.9; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="testi-img testi-item" data-type="video"
+                    data-src="https://www.instagram.com/p/CxttG9Dxiwv/embed"
+                    style="position: relative; overflow: hidden; background: #fafafa;">
+                    <iframe src="https://www.instagram.com/p/CxttG9Dxiwv/embed"
+                        style="width: 150%; height: 150%; position: absolute; top: -25%; left: -25%; pointer-events: none; border: none;"
+                        scrolling="no"></iframe>
+                    <div
+                        style="position: absolute; z-index: 10; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3);">
+                        <svg fill="#fff" width="48" viewBox="0 0 24 24"
+                            style="opacity: 0.9; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Clones -->
+                <img src="testimonios_01.png" alt="Testimonio" class="testi-img testi-item" data-type="image"
+                    data-src="testimonios_01.png">
+                <img src="testimonios_02.png" alt="Testimonio" class="testi-img testi-item" data-type="image"
+                    data-src="testimonios_02.png">
+                <img src="testimonios_03.png" alt="Testimonio" class="testi-img testi-item" data-type="image"
+                    data-src="testimonios_03.png">
+
+                <div class="testi-img testi-item" data-type="video"
+                    data-src="https://www.youtube.com/embed/7zK-JYx_41Y?autoplay=1&mute=1"
+                    style="position: relative; overflow: hidden;">
+                    <iframe
+                        src="https://www.youtube.com/embed/7zK-JYx_41Y?autoplay=1&mute=1&controls=0&loop=1&playlist=7zK-JYx_41Y&playsinline=1"
+                        style="width: 150%; height: 150%; position: absolute; top: -25%; left: -25%; pointer-events: none; border: none;"></iframe>
+                    <div
+                        style="position: absolute; z-index: 10; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.1);">
+                        <svg fill="#fff" width="48" viewBox="0 0 24 24"
+                            style="opacity: 0.9; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="testi-img testi-item" data-type="video"
+                    data-src="https://www.youtube.com/embed/qI7NmhzbZBA?autoplay=1&mute=1"
+                    style="position: relative; overflow: hidden;">
+                    <iframe
+                        src="https://www.youtube.com/embed/qI7NmhzbZBA?autoplay=1&mute=1&controls=0&loop=1&playlist=qI7NmhzbZBA&playsinline=1"
+                        style="width: 150%; height: 150%; position: absolute; top: -25%; left: -25%; pointer-events: none; border: none;"></iframe>
+                    <div
+                        style="position: absolute; z-index: 10; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.1);">
+                        <svg fill="#fff" width="48" viewBox="0 0 24 24"
+                            style="opacity: 0.9; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="testi-img testi-item" data-type="video"
+                    data-src="https://www.instagram.com/p/CxttG9Dxiwv/embed"
+                    style="position: relative; overflow: hidden; background: #fafafa;">
+                    <iframe src="https://www.instagram.com/p/CxttG9Dxiwv/embed"
+                        style="width: 150%; height: 150%; position: absolute; top: -25%; left: -25%; pointer-events: none; border: none;"
+                        scrolling="no"></iframe>
+                    <div
+                        style="position: absolute; z-index: 10; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3);">
+                        <svg fill="#fff" width="48" viewBox="0 0 24 24"
+                            style="opacity: 0.9; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEDES SECTION -->
+    <section class="info-section fade-up" id="sedes" style="padding-top: 2rem;">
+        <h2 class="section-title">Nuestras Sedes</h2>
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+            <!-- Sede CDMX -->
+            <div
+                style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
+                <img src="sede01.png" alt="Sede CDMX"
+                    style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1.5rem; filter: brightness(0.9);">
+                <h3 style="color: var(--color-accent); font-size: 2rem; font-family: var(--font-main);">Polanco - Ciudad
+                    de México
+                </h3>
+            </div>
+            <!-- Sede Tapachula -->
+            <div
+                style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
+                <img src="sede02.png" alt="Sede Tapachula"
+                    style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 1.5rem; filter: brightness(0.9);">
+                <h3 style="color: var(--color-accent); font-size: 2rem; font-family: var(--font-main);">Tapachula</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ & CONTACT SECTION -->
+    <section class="info-section" id="contacto">
+        <h2 class="section-title fade-up">Consulta y Contacto</h2>
+        <div class="faq-contact-wrapper">
+            <div class="faq-list fade-up">
+                <div class="faq-item">
+                    <div class="faq-q">¿La valoración tiene costo?</div>
+                    <div class="faq-a">Sí, la consulta permite realizar un análisis detallado, resolver dudas y diseñar
+                        un plan quirúrgico personalizado.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">¿Atienden pacientes del extranjero?</div>
+                    <div class="faq-a">Sí. Brindamos orientación previa y atención bilingüe (español/inglés) para
+                        facilitar toda la experiencia en CDMX.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">¿La liposucción es para bajar de peso?</div>
+                    <div class="faq-a">No, es un método para moldear y definir zonas específicas donde la grasa es
+                        resistente a la dieta y el ejercicio.</div>
+                </div>
+            </div>
+
+            <div class="contact-box fade-up">
+                <h3>Agenda tu Cita</h3>
+                <p>Da el primer paso hacia tu mejor versión. Contáctanos hoy para una valoración honesta y
+                    personalizada.</p>
+
+                <a href="https://wa.me/525551864201?text=Hola,%20vi%20sus%20resultados%20y%20me%20interesa%20agendar%20una%20cita%20de%20valoraci%C3%B3n.%20%C2%BFPodr%C3%ADan%20compartirme%20costos%20y%20horarios%20disponibles%3F"
+                    target="_blank" class="btn-cta" style="margin-bottom: 2rem;">Contactar por WhatsApp</a>
+
+                <div class="contact-info-item">
+                    <strong>Email:</strong><br>
+                    <a href="mailto:jorge.preyra@gmail.com">jorge.preyra@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="outro">
+        <div class="social-wrapper">
+            <p
+                style="font-family: var(--font-main); font-weight: 300; font-size: 1rem; color: var(--color-text-muted);">
+                Conecta con nosotros:</p>
+            <div class="social-links" style="margin-top: 1rem;">
+                <a href="https://www.instagram.com/enriquepereyra" target="_blank" class="social-icon">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/share/1CgfhrRyP4/" target="_blank" class="social-icon">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                    </svg>
+                </a>
+                <a href="https://youtube.com/@preyra100?si=XjLpx5V6SRS9-UEK" target="_blank" class="social-icon">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Dr. Jorge Pereyra.</p>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/525551864201?text=Hola,%20vi%20sus%20resultados%20y%20me%20interesa%20agendar%20una%20cita%20de%20valoraci%C3%B3n.%20%C2%BFPodr%C3%ADan%20compartirme%20costos%20y%20horarios%20disponibles%3F"
+        target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <!-- MODAL POPUP -->
+    <div class="procedure-modal" id="procModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h3 id="modalTitle">Título del Procedimiento</h3>
+            <p id="modalDesc">Descripción breve, clara y amigable con el paciente.</p>
+            <div class="ideal-box">
+                <strong>Ideal para:</strong> <span id="modalIdeal">Perfil de paciente.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TESTI MODAL POPUP -->
+    <div class="testi-modal" id="testiModal">
+        <div class="testi-modal-content">
+            <span class="testi-close" id="testiClose">&times;</span>
+            <img id="testiModalImg" src="" alt="Testimonio Ampliado" style="display: none;">
+            <iframe id="testiModalVideo" src="" allow="autoplay; encrypted-media" style="display: none;"></iframe>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.35/dist/lenis.min.js"></script>
+
+    <script>
+        // Configuration for animations
+        const config = {
+            gap: 0.08, // Gap between floating image animations
+            speed: 0.3, // Speed of each image animation
+            arcRadius: 300 // Radius of the bezier curve
+        };
+
+        // Data for dynamic content
+        const spotlightItems = [
+            { name: "Cirugía Plástica", image: "image1.png" },
+            { name: "Rinoplastía", image: "image5.png" },
+            { name: "Liposucción", image: "image6.png" },
+            { name: "Botox", image: "image7.png" },
+            { name: "Mamoplastia", image: "image4.png" },
+            { name: "Gluteoplastia", image: "image2.png" }
+        ];
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Initialize smooth scrolling with Lenis
+        const lenis = new Lenis();
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+
+        // Scroll Indicator Logic
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        let hasScrolled = false;
+
+        const checkScroll = () => {
+            if (window.scrollY > 10) {
+                hasScrolled = true;
+                scrollIndicator.classList.remove('visible');
+                window.removeEventListener('scroll', checkScroll);
+            }
+        };
+
+        window.addEventListener('scroll', checkScroll);
+
+        setTimeout(() => {
+            if (!hasScrolled && window.scrollY <= 10) {
+                scrollIndicator.classList.add('visible');
+            }
+        }, 5000);
+
+        // DOM element queries
+        const titlesContainer = document.querySelector('.spotlight-titles');
+        const imagesContainer = document.querySelector('.spotlight-images');
+        const sideHeader = document.querySelector('.spotlight-header');
+        const titlesClipper = document.querySelector('.spotlight-titles-container');
+        const introTextElements = document.querySelectorAll('.spotlight-intro-text');
+        const imageElements = [];
+
+        // Dynamic content generation
+        spotlightItems.forEach((item, index) => {
+            const titleElement = document.createElement('h1');
+            titleElement.textContent = item.name;
+            if (index === 0) titleElement.style.opacity = "1";
+            titlesContainer.appendChild(titleElement);
+
+            const imgWrapper = document.createElement('div');
+            imgWrapper.className = 'spotlight-image';
+            const imgElement = document.createElement('img');
+            imgElement.src = item.image;
+            imgElement.alt = "";
+            imgWrapper.appendChild(imgElement);
+            imagesContainer.appendChild(imgWrapper);
+            imageElements.push(imgWrapper);
+        });
+
+        const titleElements = titlesContainer.querySelectorAll('h1');
+        let currentActiveIndex = 0;
+
+        // Bezier Curve Logic
+        const containerWidth = window.innerWidth * 0.3;
+        const containerHeight = window.innerHeight;
+        const arcStartX = containerWidth / 2 - 50;
+        const arcStartY = -200;
+        const arcEndY = containerHeight + 200;
+        const arcControlPointX = arcStartX + config.arcRadius;
+        const arcControlPointY = containerHeight / 2;
+
+
+        function getBezierPosition(t) {
+            const x =
+                (1 - t) * (1 - t) * arcStartX +
+                2 * (1 - t) * t * arcControlPointX +
+                t * t * arcStartX;
+            const y =
+                (1 - t) * (1 - t) * arcStartY +
+                2 * (1 - t) * t * arcControlPointY +
+                t * t * arcEndY;
+            return { x, y };
+        }
+
+        // Function to calculate individual image progress
+        function getImageProgressState(index, totalProgress) {
+            const start = index * config.gap;
+            const end = start + config.speed;
+
+            if (totalProgress < start) return -1; // Not yet started
+            if (totalProgress > end) return 2; // Finished
+            return (totalProgress - start) / config.speed; // Normalized progress
+        }
+
+        // Initial state for images
+        imageElements.forEach((img) => gsap.set(img, { opacity: 0 }));
+
+        // INTRO ANIMATION TIMELINE
+        // Start dead center for both
+        const isMobile = window.innerWidth < 768;
+        const logoOffset = isMobile ? 50 : 100;
+        gsap.set(".logo-img", { xPercent: -50, yPercent: -50, left: "50%", top: "50%", x: 0 });
+        gsap.set(".logo-text", { xPercent: -50, yPercent: -50, left: "50%", top: "50%", x: logoOffset });
+
+        gsap.to(".logo-img", { opacity: 1, duration: 2, ease: "power2.out" }); // Soft fade in
+
+        const introTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".intro",
+                start: "top top",
+                end: "+=100%", // Scroll for 1 viewport height
+                pin: true,
+                scrub: 1
+            }
+        });
+
+        // Intro slides logo left and reveals name right symmetrically
+        const imgShift = isMobile ? -100 : -200;
+        const textShift = isMobile ? 80 : 150;
+        introTl.to(".logo-img", { x: imgShift, scale: 0.65 }, 0)
+            .to(".logo-text", { opacity: 1, x: textShift }, 0);
+
+        // Main ScrollTrigger setup
+        ScrollTrigger.create({
+            trigger: ".spotlight",
+            start: "top top",
+            end: `+=${window.innerHeight * 4}px`,
+            pin: true,
+            pinSpacing: true,
+            scrub: 1,
+            onUpdate: (self) => {
+                const progress = self.progress;
+
+                // Intro animation segment (0% to 20%)
+                if (progress <= 0.2) {
+                    const animationProgress = progress / 0.2;
+                    const moveDistance = window.innerWidth * 0.6; // Reverted back to original wide slice
+
+                    // Original columns slice apart horizontally
+                    if (introTextElements.length >= 2) {
+                        gsap.set(introTextElements[0], {
+                            x: -animationProgress * moveDistance,
+                            opacity: 1 - animationProgress
+                        });
+                        gsap.set(introTextElements[1], {
+                            x: animationProgress * moveDistance,
+                            opacity: 1 - animationProgress
+                        });
+                    }
+
+                    gsap.set(".spotlight-bg-image", {
+                        scale: animationProgress,
+                    });
+                    gsap.set(".spotlight-bg-image img", {
+                        scale: 1.5 - animationProgress * 0.5,
+                    });
+
+                    imageElements.forEach((img) => gsap.set(img, { opacity: 0 }));
+                    sideHeader.style.opacity = "0";
+                    gsap.set(titlesClipper, {
+                        "--before-opacity": "0",
+                        "--after-opacity": "0",
+                    });
+
+                } else if (progress > 0.2 && progress <= 0.25) {
+                    gsap.set(".spotlight-bg-image", { scale: 1 });
+                    gsap.set(".spotlight-bg-image img", { scale: 1 });
+
+                    if (introTextElements.length >= 2) {
+                        gsap.set(introTextElements[0], { opacity: 0 });
+                        gsap.set(introTextElements[1], { opacity: 0 });
+                    }
+
+                    imageElements.forEach((img) => gsap.set(img, { opacity: 0 }));
+                    sideHeader.style.opacity = "1";
+                    gsap.set(titlesClipper, {
+                        "--before-opacity": "1",
+                        "--after-opacity": "1",
+                    });
+                } else if (progress > 0.25 && progress <= 0.95) {
+                    gsap.set(".spotlight-bg-image", { scale: 1 });
+                    gsap.set(".spotlight-bg-image img", { scale: 1 });
+
+                    if (introTextElements.length >= 2) {
+                        gsap.set(introTextElements[0], { opacity: 0 });
+                        gsap.set(introTextElements[1], { opacity: 0 });
+                    }
+
+                    sideHeader.style.opacity = "1";
+                    gsap.set(titlesClipper, {
+                        "--before-opacity": "1",
+                        "--after-opacity": "1",
+                    });
+                }
+
+
+                const switchProgress = (progress - 0.25) / 0.7;
+                const viewportHeight = window.innerHeight;
+                const titlesContainerHeight = titlesContainer.scrollHeight;
+                const startPosition = viewportHeight;
+                const targetPosition = -titlesContainerHeight;
+                const totalDistance = startPosition - targetPosition;
+                const currentY = startPosition - switchProgress * totalDistance;
+
+                gsap.set(".spotlight-titles", {
+                    y: currentY
+                });
+
+                imageElements.forEach((img, index) => {
+                    const imageProgress = getImageProgressState(index, switchProgress);
+
+                    if (imageProgress < 0 || imageProgress > 1) {
+                        gsap.set(img, { opacity: 0 });
+                    } else {
+                        // Calculate the position using a Bezier curve
+                        const pos = getBezierPosition(imageProgress);
+
+                        // Set the image's position and make it visible
+                        gsap.set(img, {
+                            x: pos.x - 100,
+                            y: pos.y - 75,
+                            opacity: 1,
+                        });
+                    }
+                });
+
+                const viewportMiddle = viewportHeight / 2;
+                let closestIndex = 0;
+                let closestDistance = Infinity;
+
+                titleElements.forEach((title, index) => {
+                    const titleRect = title.getBoundingClientRect();
+                    const titleCenter = titleRect.top + titleRect.height / 2;
+                    const distanceFromCenter = Math.abs(titleCenter - viewportMiddle);
+
+                    if (distanceFromCenter < closestDistance) {
+                        closestDistance = distanceFromCenter;
+                        closestIndex = index;
+                    }
+                });
+
+                if (closestIndex !== currentActiveIndex) {
+                    if (titleElements[currentActiveIndex]) {
+                        titleElements[currentActiveIndex].style.opacity = "0.25";
+                    }
+                    titleElements[closestIndex].style.opacity = "1";
+                    document.querySelector(".spotlight-bg-image img").src = spotlightItems[closestIndex].image;
+                    currentActiveIndex = closestIndex;
+                } else if (progress > 0.95) {
+                    sideHeader.style.opacity = "0";
+                    gsap.set(titlesClipper, {
+                        "--before-opacity": "0",
+                        "--after-opacity": "0",
+                    });
+                }
+            }
+        });
+
+        // NUESVOS TRIGGERS PARA LAS SECCIONES DE INFO (FADE UPs)
+        const fadeUpElements = gsap.utils.toArray('.fade-up');
+        fadeUpElements.forEach(el => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // LÓGICA DE POPUPS PARA PROCEDIMIENTOS
+        const modalData = {
+            "Abdominoplastia": { desc: "Remueve el exceso de piel y grasa del abdomen, al tiempo que restaura los músculos debilitados para un vientre más plano.", ideal: "Quienes han perdido mucho peso o mujeres tras embarazos que desean recuperar un abdomen plano y firme." },
+            "Aumento / Levantamiento de glúteos": { desc: "Mejora el volumen y proyección de los glúteos de forma segura y natural.", ideal: "Quienes desean curvas más pronunciadas y levantar el tejido que ha perdido firmeza." },
+            "Ginecomastia": { desc: "Reducción del tejido mamario excesivo en hombres para lograr un pecho plano y aspecto varonil.", ideal: "Hombres que presentan aumento en el volumen de sus pectorales que no cede con dieta o ejercicio." },
+            "Mamoplastia de aumento": { desc: "Aumenta el tamaño y mejora la forma del busto utilizando implantes seguros y de alta tecnología médica.", ideal: "Mujeres que buscan mejorar la proporción de su figura o recuperar el volumen perdido tras la lactancia." },
+            "Lipoescultura": { desc: "Procedimiento que elimina la grasa acumulada y difícil, redistribuyéndola para esculpir una silueta atlética.", ideal: "Quienes buscan modelar el abdomen, afinar la cintura y resaltar sus curvas naturales reduciendo tallas." },
+            "Mommy Make Over": { desc: "Conjunto de procedimientos estéticos (busto y abdomen) diseñados especialmente para recuperar tu figura tras ser mamá.", ideal: "Mamás que desean restaurar la firmeza, volumen y contorno de su cuerpo a como era antes del embarazo." },
+            "Rinoplastia Ultrasónica": { desc: "Cirugía de nariz de alta precisión que utiliza tecnología ultrasónica para esculpir el hueso, causando menos inflamación y moretones.", ideal: "Quienes buscan mejorar la estética y función respiratoria de su nariz con tiempos de recuperación más rápidos." },
+            "Cirugía de orejas (Otoplastia)": { desc: "Procedimiento estético y funcional para reposicionar las orejas prominentes o 'en asa' más cerca de la cabeza.", ideal: "Pacientes que sienten inseguridad o incomodidad por el tamaño o la proyección excesiva de sus orejas." },
+            "Levantamiento de párpados": { desc: "Elimina el exceso de piel caída y las bolsitas de grasa alrededor de los ojos para brindar una mirada más fresca.", ideal: "Personas con apariencia de cansancio constante, mirada triste o piel que cae sobre sus ojos." },
+            "Lipo papada": { desc: "Extrae de forma segura y permanentemente la grasa acumulada debajo del mentón y en el cuello anterior.", ideal: "Quienes desean definir la línea de la mandíbula inferior y eliminar para siempre el molesto 'doble mentón'." },
+            "Bichectomía": { desc: "Retiro de las bolsas de grasa internas de las mejillas (bolsas de Bichat) para afilar el rostro y resaltar tus pómulos.", ideal: "Pacientes de rostros más redondos que buscan un perfil facial mucho más estilizado y angular." },
+            "Lifting Facial": { desc: "Tensa los músculos fasciales y elimina la piel sobrante para rejuvenecer totalmente el rostro y cuello de manera integral.", ideal: "Quienes desean revertir los signos del envejecimiento avanzados, combatiendo flacidez y surcos profundos." }
+        };
+
+        const modal = document.getElementById('procModal');
+        const closeModal = document.getElementById('closeModal');
+        const procItems = document.querySelectorAll('.procedure-cat li');
+
+        procItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const procName = item.textContent.trim();
+                const data = modalData[procName];
+                if (data) {
+                    document.getElementById('modalTitle').textContent = procName;
+                    document.getElementById('modalDesc').textContent = data.desc;
+                    document.getElementById('modalIdeal').textContent = data.ideal;
+                    modal.classList.add('active');
+                    // Disable body scroll when modal open
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        const closeFunc = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        closeModal.addEventListener('click', closeFunc);
+
+        // LÓGICA DE POPUPS PARA TESTIMONIOS (OXFORD GRAY)
+        const testiModal = document.getElementById('testiModal');
+        const testiModalImg = document.getElementById('testiModalImg');
+        const testiModalVideo = document.getElementById('testiModalVideo');
+        const testiClose = document.getElementById('testiClose');
+        const testiTrack = document.getElementById('testiTrack');
+
+        document.querySelectorAll('.testi-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (item.dataset.type === 'video') {
+                    testiModalImg.style.display = 'none';
+                    testiModalVideo.style.display = 'block';
+                    testiModalVideo.src = item.dataset.src;
+                } else {
+                    testiModalVideo.style.display = 'none';
+                    testiModalVideo.src = "";
+                    testiModalImg.style.display = 'block';
+                    testiModalImg.src = item.dataset.src;
+                }
+
+                testiTrack.classList.add('paused');
+                testiModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        const closeTesti = () => {
+            testiModal.classList.remove('active');
+            testiTrack.classList.remove('paused');
+            testiModalVideo.src = ""; // Kill video background playback
+            document.body.style.overflow = '';
+        };
+
+        testiClose.addEventListener('click', closeTesti);
+        testiModal.addEventListener('click', (e) => {
+            if (e.target === testiModal) closeTesti();
+        });
+
+        // HAMBURGER MENU
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.mobile-nav-link, .mobile-menu .btn-cta').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // WhatsApp Dynamic Behavior
+        let isScrollingTimeout;
+        const waButton = document.querySelector('.whatsapp-float');
+
+        window.addEventListener('scroll', () => {
+            waButton.classList.add('is-scrolling');
+            window.clearTimeout(isScrollingTimeout);
+            isScrollingTimeout = setTimeout(() => {
+                waButton.classList.remove('is-scrolling');
+            }, 500);
+        }, false);
+    </script>
+</body>
+
+</html>
